@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js" integrity="sha512-QJsj3afWlCpnQ60XzzYE8Jb3IgHIK1BcGZox9rUSmRRq3Ocz9vQ1yR80eX2/b9jfx/UuT5zYWNdrM8Te/eCMhQ==" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.1.0"></script>
+    <style>
+        .profil-info {
+            margin: 0;
+            font-size: 12px;
+        }
+        
+        .profil-alamat {
+            margin: 14;
+            font-size: 12px;
+        }
+        
+        .minBtn,
+        .plusBtn {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="/img/pasarjaya2.png" alt="" style="height: 35px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <div class="navbar-nav ml-auto">
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Daftar <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="mt-3" id="main">
+        <div class="container">
+            <section class="mb-4">
+                <form action="" method="POST" id="formBelanja">
+                    <div class="d-flex mb-3">
+                        <div class="d-block align-self-center">
+                            <img src="/img/icon/shop.png" alt="" srcset="" class="img-fluid">
+
+                        </div>
+                        <div class="d-block ml-2">
+                            <p class="m-0">Toko Hibar</p>
+                            <p class="profil-info">082323450450</p>
+                            <p class="profil-info">pasarjaya@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="d-flex p-2 bg-light mb-4">
+                        <p class="profil-alamat d-block">A</p>
+                        <p class="profil-alamat d-block">Jalan haji bukidi</p>
+                    </div>
+                    <h4 class="mb-3">Produk</h4>
+                    <div class="form-group">
+                        <input type="text" name="" class="form-control" placeholder=" Cari Produk">
+                    </div>
+                    <template v-for="(item, index) in 2" :key="index">
+                        <div class="content-produk">
+                            <div class="d-flex mb-3">
+                                <div class="d-block align-self-center">
+                                    <img src="/img/icon/item.png" alt="" srcset="" class="img-fluid" width="50px">
+                                </div>
+                                <div class="d-block ml-2">
+                                    <p class="m-0">Buku Belajar Sholat</p>
+                                    <p class="profil-info text-info">Stok ada</p>
+                                    <p class="profil-info">Rp 5,000/pcs</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end mb-3 data-produk" style="font-size: 20px;" v-bind:data-id="item" v-bind:data-harga=30000 v-bind:data-index="index">
+                                <i class="fa fa-minus-circle align-self-center minBtn" aria-hidden="true"></i>
+                                <input type="text" name="qty[]" class="text-center col-1 mx-1 border-0 px-0" style="font-size:14px" value="0">
+                                <i class="fa fa-plus-circle align-self-center plusBtn" aria-hidden="true"></i>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="catatan[]" class="form-control" placeholder="Catatan...">
+                            </div>
+                        </div>
+                    </template>
+                    <div class="content-calculate">
+
+                        <div class="d-flex justify-content-between">
+                            <div class="align-self-end">
+                                <p class="m-0" style="font-size: 14px;">Total Barang (<span class="info-totalBarang">0</span>)</p>
+                                <p class="m-0 align-self-center">Rp.<span class="info-totalHarga">0</span></p>
+                            </div>
+                            <div class="align-self-end">
+                                <button type="submit" class="btn btn-success">Tambah Ke Keranjang</button>
+                            </div>
+
+                        </div>
+                        <input type="hidden" name="totalBarang" value="0">
+                        <input type="hidden" name="totalHarga" value="0">
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body">
+                    <p>Produk Ditambahkan Ke Keranjang</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark">Lanjutkan Belanja</button>
+                    <button type="button" class="btn btn-success">Lihat Keranjang</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/home.js"></script>
+    <script>
+        $('#formBelanja').on('submit', function(e) {
+            e.preventDefault();
+            var url = $(this).attr('action');
+            var data = $(this).serialize();
+            console.log(data);
+            $('.modal').modal('show');
+
+        });
+
+        var am = new AutoNumeric.multiple('[name="qty[]"]', {
+            decimalPlaces: 0,
+            minimumValue: 0,
+            maximumValue: 999,
+
+        });
+
+        function updateHarga() {
+            var totalBarang = 0;
+            $('[name="qty[]"]').each(function() {
+                totalBarang = totalBarang + parseInt($(this).val());
+            })
+            $('.info-totalBarang').text(totalBarang);
+
+            var totalHarga = 0;
+            $('.data-produk').each(function() {
+                harga = parseFloat($(this).data('harga'));
+                qty = parseInt($(this).find('[name="qty[]"]').val());
+                subTotal = harga * qty;
+                totalHarga = totalHarga + subTotal;
+            });
+            infoTotalHarga = numeral(totalHarga).format('1,1');
+            $('.info-totalHarga').text(infoTotalHarga);
+            $('[name="totalBarang"]').val(totalBarang);
+            $('[name="totalHarga"]').val(totalHarga);
+
+        }
+
+
+        $('.plusBtn').on('click', function() {
+            var qty = $(this).closest('div').find('[name="qty[]"]').val();
+            qty = parseInt(qty);
+            if (qty < 999) {
+                qty = qty + 1;
+                $(this).closest('div').find('[name="qty[]"]').val(qty);
+                updateHarga();
+            }
+        });
+
+        $('.minBtn').on('click', function() {
+            var qty = $(this).closest('div').find('[name="qty[]"]').val();
+            qty = parseInt(qty);
+            if (qty > 0) {
+                qty = qty - 1;
+                $(this).closest('div').find('[name="qty[]"]').val(qty);
+                updateHarga();
+            }
+        });
+
+        $('[name="qty[]"]').on('keydown keyup', function() {
+            var tempValue = $(this).val();
+            if (tempValue == '') {
+                var index = $(this).closest('div').data('index');
+                am[index].set(0);
+            }
+            updateHarga();
+        });
+    </script>
+</body>
+
+</html>
