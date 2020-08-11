@@ -1,3 +1,13 @@
+Vue.component('blog-post', {
+    template: '<h3>Sudin</h3>'
+});
+
+var header = new Vue({
+    el: '#header',
+});
+
+
+
 var vm = new Vue({
     el: '#main',
     data: function() {
@@ -6,6 +16,9 @@ var vm = new Vue({
         }
     }
 });
+
+
+
 
 var swiper = new Swiper('.swiper-container', {
     slidesPerView: 3,
