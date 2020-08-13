@@ -16,6 +16,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.1.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js" integrity="sha512-VZ6m0F78+yo3sbu48gElK4irv2dzPoep8oo9LEjxviigcnnnNvnTOJRSrIhuFk68FMLOpiNz+T77nNY89rnWDg==" crossorigin="anonymous"></script>
     <style>
         .profil-info {
             margin: 0;
@@ -268,6 +269,100 @@
             $('.modal-delete-item').modal('show');
 
         });
+
+        var url = 'http://dev-api.oyes.id:8780/api/v2/minicommerce/operator/17/tagihan';
+        var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImU1NzEwZTNiNTQ1NWIwODcxMzVhYzFjZGNiNGU3MGQyYjVlZDAwYTdlNDFkYTgzYWNkYzQ0NGU2NmQ1NzI5Y2RmM2U2OTY2YmY0YjE5ZTY0In0.eyJhdWQiOiIzIiwianRpIjoiZTU3MTBlM2I1NDU1YjA4NzEzNWFjMWNkY2I0ZTcwZDJiNWVkMDBhN2U0MWRhODNhY2RjNDQ0ZTY2ZDU3MjljZGYzZTY5NjZiZjRiMTllNjQiLCJpYXQiOjE1OTcxODExNDIsIm5iZiI6MTU5NzE4MTE0MiwiZXhwIjoxNTk5NzczMTQyLCJzdWIiOiIiLCJzY29wZXMiOlsiKiJdfQ.kdE5LY0py77KfwPBMaLIxWrWn-W9eXvSByVpvJcIND1_r5VjI8oxGLXtppuXmynhF_1U9-Z-nVNpZKt5yXOX0Z2IN18sCxsxW99ykCSY1SwSRAkARQuF2jGpUpcg28_OupTC_kJcAK4avRPiOyNtiyX93OzsrqwVAgyVZJNosJnV04PYVp9NfAh_LLu5CFVqfl44-wi_CEu--VNpEKPb7C8L-fz_4_9cs2us8HOpmkzGrEcHT5dIe-rv6LBAfTNTEliAQdDAe0vjK2_w-hXEKu6ecMIF-FQ-RS4r02JmkSRlzjLc2pFBbb--1eZX7rrFTNvLEzJg-SuO8LH7jZv2dUngr-sHgpUATTUimY7ijJnkvwZAxJut5-wvknAz5apOsj67938jr6mc_s1nzM27__LauoJABYuZCAorHFNmZxzhzg6xBiyE3-RKVjwoBNFNo6HqCbt8X2scbAE1W8Nz0v2523Y_0k_uvb9F30cI36FwYgmkbKnqdTZfujClcwcvPNHSeMtn2bjf0oT4qT5L35QYh1wjLMpUXIU4t7jaYyKnIV8X328suROj-eZEgj4jY7ubwXcP7gj3sqq5fMuZRPKirfNisDOUpsjRej_Vt3jHGTbIdlcXKJf_6nd6_3YnthX3nSzAXfn9ZX_BqOiUb1844vhpaS6jfshaKCl_-q8';
+
+        var data = {
+            "dry_run": 1,
+            "id_operator": 17,
+            "kode": "abc123",
+            "metode_pembayaran": "narobilb2b",
+            "metode_pengiriman": "pibkup",
+            "id_pembeli": null,
+            "pembeli": {
+                "id_operator": 17,
+                "nama": "Iman Sjamhudi",
+                "email": "indoomni@gmail.com",
+                "msisdn": "+628999175163"
+            },
+            "po": [{
+                "id_pemasok": 250,
+                "produk": [{
+                    "id": 684,
+                    "jumlah": 3,
+                    "catatan": "test b"
+                }, {
+                    "id": 688,
+                    "jumlah": 3,
+                    "catatan": "test a"
+                }]
+            }, {
+                "id_pemasok": 203,
+                "produk": [{
+                    "id": 471,
+                    "jumlah": 3,
+                    "catatan": "test a"
+                }]
+            }]
+        }
+
+
+        // axios.post(url, data, {
+        //     headers: {
+        //         'Access-Control-Allow-Origin': '*',
+        //         'Authorization': 'Bearer ' + token
+        //     },
+        // }).then(function(res) {
+        //     alert('berhasil');
+        // }).catch(function(error) {
+        //     alert('error');
+        // });
+
+        axios.request({
+            url: "api/v2/minicommerce/operator/17/tagihan",
+            method: "post",
+            baseURL: "http://localhost:8000/",
+            data: data,
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                'Authorization': 'Bearer ' + token
+            },
+        }).then(function(res) {
+            token = res.data.access_token;
+            alert(token);
+        }).catch(function(error) {
+            alert('error');
+        });
+
+
+        // $.ajax({
+        //     url: "http://dev-api.oyes.id:8780/api/v2/minicommerce/operator/17/tagihan",
+        //     type: 'POST',
+        //     // Fetch the stored token from localStorage and set in the header
+        //     data: data,
+        //     headers: {
+        //         "Authorization": 'Bearer ' + token
+        //     }
+        // });
+
+
+
+        // axios.request({
+        //     url: "/oauth/token",
+        //     method: "post",
+        //     baseURL: "http://dev-api.oyes.id:8780/",
+        //     data: {
+        //         "grant_type": "client_credentials",
+        //         "scope": "*",
+        //         "client_id": 3,
+        //         "client_secret": "JPw0PBAriuZXQZnWR6ssY9f5FMN4d3Y6BY1WLDQx"
+        //     }
+        // }).then(function(res) {
+        //     token = res.data.access_token;
+        //     console.log(token);
+        // });
+        // console.log(token);
     </script>
 </body>
 
