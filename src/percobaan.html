@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js" integrity="sha512-QJsj3afWlCpnQ60XzzYE8Jb3IgHIK1BcGZox9rUSmRRq3Ocz9vQ1yR80eX2/b9jfx/UuT5zYWNdrM8Te/eCMhQ==" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <button id="btn">Sudin</button>
+
+    <script>
+        var execution = '';
+
+        function myfunction(nama) {
+            alert(nama);
+        }
+
+        function updateRecrution() {
+            clearTimeout(execution);
+            execution = setTimeout(function() {
+                myfunction('odan');
+            }, 300);
+
+        }
+
+
+        // var nClick = 0;
+        // var execution = '';
+
+        // function myfunction() {
+        //     alert(nClick);
+        //     nClick = 0;
+        // }
+
+        // function updateRecrution() {
+        //     clearTimeout(execution);
+        //     execution = setTimeout(myfunction, 300);
+        //     nClick = nClick + 1;
+        // }
+
+        $("#btn").click(function() {
+            updateRecrution();
+        });
+    </script>
+</body>
+
+</html>

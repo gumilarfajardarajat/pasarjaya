@@ -21,9 +21,8 @@ var vm = new Vue({
 
 
 var swiper = new Swiper('.swiper-container', {
-    slidesPerView: 3,
+    slidesPerView: 'auto',
     spaceBetween: 0,
-    freeMode: true,
     pagination: {
         el: '.swiper-pagination',
         clickable: true,

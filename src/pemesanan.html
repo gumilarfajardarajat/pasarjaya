@@ -319,21 +319,21 @@
         //     alert('error');
         // });
 
-        axios.request({
-            url: "api/v2/minicommerce/operator/17/tagihan",
-            method: "post",
-            baseURL: "http://localhost:8000/",
-            data: data,
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-                'Authorization': 'Bearer ' + token
-            },
-        }).then(function(res) {
-            token = res.data.access_token;
-            alert(token);
-        }).catch(function(error) {
-            alert('error');
-        });
+        // axios.request({
+        //     url: "api/v2/minicommerce/operator/17/tagihan",
+        //     method: "post",
+        //     baseURL: "http://localhost:8000/",
+        //     data: data,
+        //     headers: {
+        //         "Access-Control-Allow-Origin": "*",
+        //         'Authorization': 'Bearer ' + token
+        //     },
+        // }).then(function(res) {
+        //     token = res.data.access_token;
+        //     alert(token);
+        // }).catch(function(error) {
+        //     alert('error');
+        // });
 
 
         // $.ajax({
@@ -348,21 +348,21 @@
 
 
 
-        // axios.request({
-        //     url: "/oauth/token",
-        //     method: "post",
-        //     baseURL: "http://dev-api.oyes.id:8780/",
-        //     data: {
-        //         "grant_type": "client_credentials",
-        //         "scope": "*",
-        //         "client_id": 3,
-        //         "client_secret": "JPw0PBAriuZXQZnWR6ssY9f5FMN4d3Y6BY1WLDQx"
-        //     }
-        // }).then(function(res) {
-        //     token = res.data.access_token;
-        //     console.log(token);
-        // });
-        // console.log(token);
+        axios.request({
+            url: "/oauth/token",
+            method: "post",
+            baseURL: "http://dev-api.oyes.id:8780/",
+            data: {
+                "grant_type": "client_credentials",
+                "scope": "*",
+                "client_id": 3,
+                "client_secret": "JPw0PBAriuZXQZnWR6ssY9f5FMN4d3Y6BY1WLDQx"
+            }
+        }).then(function(res) {
+            token = res.data.access_token;
+            console.log(token);
+        });
+        console.log(token);
     </script>
 </body>
 
